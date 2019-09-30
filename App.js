@@ -17,6 +17,17 @@ export default class App extends React.Component {
   }
 }
 
+const HomePage = createStackNavigator({
+
+})
+const Login = createStackNavigator({
+
+})
+const Register = createStackNavigator({
+
+})
+
+
 export default createAppContainer(createSwitchNavigator(
   {
     HomePage: HomePage,
