@@ -10,9 +10,15 @@ const Login = () => {
 
   return (
     <View style={styles.inputContainer}>
+      <Text>
+        {"\n"}
+        {"\n"}
+        {"\n"}
+        {"\n"}
+      </Text>
       <TextInput style={styles.input} placeholder="username" />
-      <TextInput style={styles.input} placeholder="password" />
-      <TouchableOpacity style={styles.button}>
+      <TextInput style={styles.input} placeholder="password" secureTextEntry={true} />
+      <TouchableOpacity style={styles.button} onPress={() => 5}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
     </View>
@@ -21,9 +27,6 @@ const Login = () => {
   )
 
 }
-
-
-
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,

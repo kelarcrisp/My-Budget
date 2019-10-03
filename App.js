@@ -3,18 +3,20 @@ import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import HomePage from './components/HomePage/HomePage';
 import background from './images/background.png';
 import { Button } from 'react-native-elements';
-
+import { NativeRouter, Switch, Route } from 'react-router-native'
+import RegisterForm from './components/HomePage/RegisterForm';
 const App = () => {
 
   {
 
     return (
-      <ImageBackground source={background} style={styles.backgroundContainer}>
+      <NativeRouter >
         <View >
-          <HomePage />
-
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+          </Switch>
         </View>
-      </ImageBackground>
+      </NativeRouter>
     );
   }
 }
