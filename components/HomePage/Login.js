@@ -1,21 +1,22 @@
 
 import React, { Component } from 'react'
 import {
-  Text, View, StyleSheet, Image, TouchableWithoutFeedback, StatusBar,
-  TextInput, SafeAreaView, Keyboard, TouchableOpacity, KeyboardAvoidingView
+  Text, View, StyleSheet, Image, StatusBar,
+  TextInput, TouchableOpacity
 } from 'react-native'
+
+
 const Login = () => {
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <TextInput style={styles.input} placeholder="username" />
+    <View style={styles.inputContainer}>
+      <TextInput style={styles.input} placeholder="username" />
+      <TextInput style={styles.input} placeholder="password" />
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
+    </View>
 
-
-        <TextInput style={styles.input} placeholder="password" />
-
-      </View>
-    </SafeAreaView>
 
   )
 
@@ -24,14 +25,40 @@ const Login = () => {
 
 
 const styles = StyleSheet.create({
-  container: {
+  inputContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 100
 
   },
   input: {
+    width: 300,
     height: 40,
-    backgroundColor: 'gray',
-    marginBottom: 20
+    backgroundColor: 'white',
+    borderRadius: 25,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    marginVertical: 10,
+
+  },
+  button: {
+    width: 150,
+    borderRadius: 15,
+    marginVertical: 10,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    textAlign: 'center'
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: 'gray',
+    textAlign: 'center'
+
+
   }
+
 });
 
 export default Login;

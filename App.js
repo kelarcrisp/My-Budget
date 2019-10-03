@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import HomePage from './components/HomePage/HomePage';
 import background from './images/background.png';
 import { Button } from 'react-native-elements';
+
 const App = () => {
 
   {
