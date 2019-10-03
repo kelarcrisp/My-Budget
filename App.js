@@ -2,10 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import HomePage from './components/HomePage/HomePage';
 import background from './images/background.png';
-import { createStackNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation-stack';
 import { Button } from 'react-native-elements';
-export default class App extends React.Component {
-  render() {
+const App = () => {
+
+  {
+
     return (
       <ImageBackground source={background} style={styles.backgroundContainer}>
         <View >
@@ -17,24 +18,9 @@ export default class App extends React.Component {
   }
 }
 
-const HomePage = createStackNavigator({
-
-})
-const Login = createStackNavigator({
-
-})
-const Register = createStackNavigator({
-
-})
 
 
-export default createAppContainer(createSwitchNavigator(
-  {
-    HomePage: HomePage,
-    Login: Login,
-    Register: Register
-  }
-))
+
 const styles = StyleSheet.create({
   backgroundContainer: {
     flex: 1,
@@ -49,3 +35,5 @@ const styles = StyleSheet.create({
 
 
 });
+
+export default App;
