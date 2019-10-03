@@ -1,29 +1,31 @@
 import React from 'react'
-import { Input, Button } from 'react-native-elements';
-import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+
+import { StyleSheet, Text, View, Image, ImageBackground, Button } from 'react-native';
 import Login from './Login';
 import LogoEmblem from './LogoEmblem';
 import background from '../../images/background.png';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
+class HomePage extends React.Component {
+  render() {
+    return (
+      <ImageBackground style={styles.container} source={require('../../images/background.png')}>
+        <View >
+          <LogoEmblem />
+          <Login />
 
-const HomePage = () => {
+          <View style={styles.signInTextContainer}>
+            <Text style={styles.accountText}>Don't have an account yet?</Text>
+            <Text style={styles.signUpButton}> Sign Up</Text>
+          </View>
 
-  return (
-    <ImageBackground style={styles.container} source={require('../../images/background.png')}>
-      <View >
-        <LogoEmblem />
-        <Login />
-
-        <View style={styles.signInTextContainer}>
-          <Text style={styles.accountText}>Don't have an account yet?</Text>
-          <Text style={styles.signUpButton}> Sign Up</Text>
         </View>
+      </ImageBackground >
 
-      </View>
-    </ImageBackground >
+    )
 
-  )
-
+  }
 }
 
 const styles = StyleSheet.create({
@@ -32,12 +34,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row'
-
   },
   //change this color from black to soemthing else later
   accountText: {
     flexDirection: 'row',
-
   },
   signUpButton: {
     color: 'gray',
@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   }
-
-
 });
 export default HomePage;
+
+
+

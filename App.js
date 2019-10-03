@@ -1,42 +1,52 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground, Button } from 'react-native';
 import HomePage from './components/HomePage/HomePage';
-import background from './images/background.png';
-import { Button } from 'react-native-elements';
-import { NativeRouter, Switch, Route } from 'react-router-native'
-import RegisterForm from './components/HomePage/RegisterForm';
-const App = () => {
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-  {
+class HomeScreen extends React.Component {
+  render() {
 
-    return (
-      <NativeRouter >
+
+    {
+
+      return (
+
         <View >
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-          </Switch>
+          <Button
+            title="Go to Details"
+            onPress={() => this.props.navigation.navigate('Details')}
+          />
+          <HomePage />
         </View>
-      </NativeRouter>
+
+      );
+    }
+  }
+}
+class DetailsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+      </View>
     );
   }
 }
-
-
-
-
-const styles = StyleSheet.create({
-  backgroundContainer: {
-    flex: 1,
-    width: null,
-    height: null,
-    justifyContent: 'center',
-    alignItems: 'center'
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: DetailsScreen,
   },
-  logo: {
-
+  {
+    initialRouteName: 'Home',
   }
+);
 
+const AppContainer = createAppContainer(AppNavigator);
 
-});
-
-export default App;
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
