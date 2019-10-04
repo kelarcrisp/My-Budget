@@ -4,6 +4,7 @@
     "slug": "mybudget",
     "privacy": "public",
     "sdkVersion": "35.0.0",
+    "facebookScheme": "fb566023677470057",
     "platforms": [
       "ios",
       "android",

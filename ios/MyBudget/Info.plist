@@ -81,6 +81,10 @@
 	<key>CFBundleURLTypes</key>
 <array>
   <dict>
+ 
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
   <key>CFBundleURLSchemes</key>
   <array>
     <string>fb566023677470057</string>
@@ -91,5 +95,12 @@
 <string>566023677470057</string>
 <key>FacebookDisplayName</key>
 <string>kelar crisp</string>
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>fbapi</string>
+  <string>fb-messenger-share-api</string>
+  <string>fbauth2</string>
+  <string>fbshareextension</string>
+</array>
 </dict>
 </plist>

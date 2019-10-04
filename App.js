@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import * as firebase from 'firebase';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
-
+import * as Facebook from 'expo-facebook'
 
 
 
@@ -60,37 +60,26 @@ export default class App extends React.Component {
       console.log(error.toString());
     }
   }
+  ///////THIS DOESNT WORK
   async loginWithFacebook() {
-    let AppID = 566023677470057;
-    //ENTER YOUR APP ID 
-    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('AppID',
+    let AppID = '566023677470057';
+    console.log('it failed')
+    const { type, token, permissions } = await Facebook.logInWithReadPermissionsAsync(AppID,
       {
-        permissions: ['public_profile']
-      })
-
-    if (type == 'success') {
+        permissions: ['public_profile'],
+      });
+    console.log('dsdsdsd');
+    if (type === 'success') {
 
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
-
+      console.log('it worked');
       firebase.auth().signInWithCredential(credential).catch((error) => {
         console.log(error)
       })
     }
   }
 
-  // async loginWithFacebook() {
-  //   const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('566023677470057'
-  //     , { permissions: ['public_profile'] })
-  //   if (type == 'success') {
-  //     console.log("SUCCESS HIT");
-  //     const credential = firebase.auth.FacebookAuthProvider.credential(token)
-  //     firebase.auth().signInWithCredential(credential).then((result) => {
 
-  //     }).catch((error) => {
-  //       console.log(error);
-  //     })
-  //   }
-  // }
 
 
   render() {
