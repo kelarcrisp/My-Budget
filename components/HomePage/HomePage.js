@@ -4,8 +4,7 @@ import { StyleSheet, Text, View, Image, ImageBackground, Button } from 'react-na
 import Login from './Login';
 import LogoEmblem from './LogoEmblem';
 import background from '../../images/background.png';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
 
 class HomePage extends React.Component {
   render() {
@@ -14,6 +13,8 @@ class HomePage extends React.Component {
         <View >
           <LogoEmblem />
           <Login />
+
+
 
           <View style={styles.signInTextContainer}>
             <Text style={styles.accountText}>Don't have an account yet?</Text>

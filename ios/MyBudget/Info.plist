@@ -78,5 +78,18 @@
 	<string>Give MyBudget periences permission to access your photos</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Allow MyBudget to access your reminders</string>
+	<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+  <key>CFBundleURLSchemes</key>
+  <array>
+    <string>fb566023677470057</string>
+  </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>566023677470057</string>
+<key>FacebookDisplayName</key>
+<string>kelar crisp</string>
 </dict>
 </plist>
