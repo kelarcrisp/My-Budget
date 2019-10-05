@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet, Text, View, ImageBackground, } from 'react-native';
+import HomePage from './components/HomePage/HomePage'
 import * as firebase from 'firebase';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import * as Facebook from 'expo-facebook'
+import background from './images/background.png';
 
 
 
@@ -86,8 +87,11 @@ export default class App extends React.Component {
     {
 
       return (
-        <Container style={styles.container}>
+        <ImageBackground style={styles.container} source={require('./images/background.png')}>
+
           <Form>
+
+
             <Item floatingLabel>
               <Label>Email</Label>
               <Input
@@ -133,7 +137,8 @@ export default class App extends React.Component {
             </Button>
           </Form>
 
-        </Container>
+
+        </ImageBackground>
       )
     }
   }
@@ -141,10 +146,13 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    padding: 10
+
+
   },
+  container: {
+    width: '100%',
+    height: '100%',
+    paddingTop: 100
+  }
 })
 

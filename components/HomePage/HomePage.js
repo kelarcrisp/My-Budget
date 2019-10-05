@@ -1,28 +1,20 @@
 import React from 'react'
 
 import { StyleSheet, Text, View, Image, ImageBackground, Button } from 'react-native';
-import Login from './Login';
+
 import LogoEmblem from './LogoEmblem';
 import background from '../../images/background.png';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
 
 class HomePage extends React.Component {
   render() {
     return (
-      <ImageBackground style={styles.container} source={require('../../images/background.png')}>
-        <View >
-          <LogoEmblem />
-          <Login />
+
+      <View >
+        <LogoEmblem />
 
 
+      </View>
 
-          <View style={styles.signInTextContainer}>
-            <Text style={styles.accountText}>Don't have an account yet?</Text>
-            <Text style={styles.signUpButton}> Sign Up</Text>
-          </View>
-
-        </View>
-      </ImageBackground >
 
     )
 
