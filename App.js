@@ -6,6 +6,7 @@ import { Container, Content, Header, Form, Input, Item, Button, Label } from 'na
 import * as Facebook from 'expo-facebook'
 import background from './images/background.png';
 import LogoEmblem from './components/HomePage/LogoEmblem';
+import BudgetForm from './components/BudgetForm/BudgetForm';
 
 
 const firebaseConfig = {
@@ -25,7 +26,8 @@ export default class App extends React.Component {
     super(props);
     this.state = ({
       email: '',
-      password: ''
+      password: '',
+      isLogged: false
     })
   }
   componentDidMount() {
@@ -63,6 +65,11 @@ export default class App extends React.Component {
   }
   ///////THIS DOESNT WORK
   async loginWithFacebook() {
+
+    if (this.state.isLogged == true) {
+      <BudgetForm />
+    }
+
     let AppID = '566023677470057';
     console.log('it failed')
     const { type, token, permissions } = await Facebook.logInWithReadPermissionsAsync(AppID,
@@ -123,7 +130,9 @@ export default class App extends React.Component {
               full
               rounded
               primary
-              onPress={() => this.signUpUser(this.state.email, this.state.password)}>
+              onPress={() => this.signUpUser(this.state.email, this.state.password, this.setState(prevState => ({
+                isLogged: !prevState.isLogged
+              })))}>
               <Text>SignUp</Text>
             </Button>
 
