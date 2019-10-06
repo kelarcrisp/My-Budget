@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base'
 import * as Facebook from 'expo-facebook'
 import background from './images/background.png';
-
+import LogoEmblem from './components/HomePage/LogoEmblem';
 
 
 const firebaseConfig = {
@@ -90,7 +90,7 @@ export default class App extends React.Component {
         <ImageBackground style={styles.container} source={require('./images/background.png')}>
 
           <Form>
-
+            <LogoEmblem />
 
             <Item floatingLabel>
               <Label>Email</Label>

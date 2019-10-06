@@ -13,12 +13,13 @@ const LogoEmblem = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginBottom: 150,
         justifyContent: 'center',
         alignItems: 'center'
     },
 
     logo: {
-        paddingTop: 100,
+
         borderRadius: 15,
 
         alignItems: 'center',
