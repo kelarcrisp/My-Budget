@@ -1,13 +1,16 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 
-const BudgetForm = () => {
+const Alert = () => {
     return (
-        <Text>Hello from BudgetForm</Text>
+        <View>
+            <Text>Hello from BudgetForm</Text>
+        </View>
+
     )
 }
 
 const styles = StyleSheet.create({
 
 });
-export default BudgetForm
+export default Alert

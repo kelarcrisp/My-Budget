@@ -8,6 +8,8 @@ import background from './images/background.png';
 import LogoEmblem from './components/HomePage/LogoEmblem';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation'
+import BudgetHome from './components/BudgetForm/BudgetHome';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD3jADMJNmy1XfeSboA36tnbLdtYebjK-Y',
@@ -64,7 +66,7 @@ class HomeScreen extends React.Component {
       console.log(error.toString());
     }
   }
-  ///////THIS DOESNT WORK
+
   async loginWithFacebook() {
 
 
@@ -122,7 +124,7 @@ class HomeScreen extends React.Component {
               full
               rounded
               success
-              onPress={() => { this.loginUser(this.state.email, this.state.password); this.props.navigation.navigate('Details') }}>
+              onPress={() => { this.loginUser(this.state.email, this.state.password); this.props.navigation.navigate('BudgetHome') }}>
               <Text>Login</Text>
             </Button>
 
@@ -139,7 +141,7 @@ class HomeScreen extends React.Component {
               full
               rounded
               primary
-              onPress={() => { this.loginWithFacebook(this.state.password); this.props.navigation.navigate('Details') }}
+              onPress={() => { this.loginWithFacebook(this.state.password); this.props.navigation.navigate('BudgetHome') }}
             >
               <Text>Login with FaceBook</Text>
             </Button>
@@ -159,15 +161,17 @@ class DetailsScreen extends React.Component {
     return (
       <View>
         <Text>details screen</Text>
-        <Button title='go to details.. again' onPress={() => this.props.navigation.navigate('Details')} />
+
       </View>
     )
   }
 }
 const RootStack = createStackNavigator(
   {
+    //import here any page you want to go to and add an onPress to go there!
     Home: HomeScreen,
-    Details: DetailsScreen
+    Details: DetailsScreen,
+    BudgetHome: BudgetHome
   },
   { initialRouteName: 'Home' }
 )
