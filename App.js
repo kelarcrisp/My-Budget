@@ -6,8 +6,8 @@ import { Container, Content, Header, Form, Input, Item, Button, Label } from 'na
 import * as Facebook from 'expo-facebook'
 import background from './images/background.png';
 import LogoEmblem from './components/HomePage/LogoEmblem';
-import BudgetForm from './components/BudgetForm/BudgetForm';
-
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD3jADMJNmy1XfeSboA36tnbLdtYebjK-Y',
@@ -18,16 +18,17 @@ const firebaseConfig = {
 }
 firebase.initializeApp(firebaseConfig);
 
-
-
-export default class App extends React.Component {
-
+class HomeScreen extends React.Component {
+  //this line took away the white space at the top of the screen
+  static navigationOptions = {
+    header: null
+  }
   constructor(props) {
     super(props);
     this.state = ({
       email: '',
       password: '',
-      isLogged: false
+
     })
   }
   componentDidMount() {
@@ -66,22 +67,19 @@ export default class App extends React.Component {
   ///////THIS DOESNT WORK
   async loginWithFacebook() {
 
-    if (this.state.isLogged == true) {
-      <BudgetForm />
-    }
 
+    console.log('SHOW BUDGET');
     let AppID = '566023677470057';
-    console.log('it failed')
     const { type, token, permissions } = await Facebook.logInWithReadPermissionsAsync(AppID,
       {
         permissions: ['public_profile'],
       });
-    console.log('dsdsdsd');
+
     if (type === 'success') {
 
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
       console.log('it worked');
-      firebase.auth().signInWithCredential(credential).catch((error) => {
+      firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
         console.log(error)
       })
     }
@@ -91,6 +89,7 @@ export default class App extends React.Component {
 
 
   render() {
+
     {
 
       return (
@@ -114,6 +113,7 @@ export default class App extends React.Component {
                 secureTextEntry={true}
                 autCorrect={false}
                 autoCapitalize="none"
+
                 onChangeText={(password) => this.setState({ password })}
               />
 
@@ -122,7 +122,7 @@ export default class App extends React.Component {
               full
               rounded
               success
-              onPress={() => this.loginUser(this.state.email, this.state.password)}>
+              onPress={() => { this.loginUser(this.state.email, this.state.password); this.props.navigation.navigate('Details') }}>
               <Text>Login</Text>
             </Button>
 
@@ -130,9 +130,8 @@ export default class App extends React.Component {
               full
               rounded
               primary
-              onPress={() => this.signUpUser(this.state.email, this.state.password, this.setState(prevState => ({
-                isLogged: !prevState.isLogged
-              })))}>
+              onPress={() => this.signUpUser(this.state.email
+              )}>
               <Text>SignUp</Text>
             </Button>
 
@@ -140,10 +139,11 @@ export default class App extends React.Component {
               full
               rounded
               primary
-              onPress={() => this.loginWithFacebook()}
+              onPress={() => { this.loginWithFacebook(this.state.password); this.props.navigation.navigate('Details') }}
             >
               <Text>Login with FaceBook</Text>
             </Button>
+
           </Form>
 
 
@@ -151,6 +151,36 @@ export default class App extends React.Component {
       )
     }
   }
+}
+
+
+class DetailsScreen extends React.Component {
+  render() {
+    return (
+      <View>
+        <Text>details screen</Text>
+        <Button title='go to details.. again' onPress={() => this.props.navigation.navigate('Details')} />
+      </View>
+    )
+  }
+}
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: DetailsScreen
+  },
+  { initialRouteName: 'Home' }
+)
+
+const AppContainer = createAppContainer(RootStack)
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <AppContainer />
+    );
+  }
+
 }
 
 const styles = StyleSheet.create({
@@ -164,4 +194,5 @@ const styles = StyleSheet.create({
     paddingTop: 100
   }
 })
+
 
