@@ -23,7 +23,7 @@ firebase.initializeApp(firebaseConfig);
 class HomeScreen extends React.Component {
   //this line took away the white space at the top of the screen
   static navigationOptions = {
-    header: null
+    header: null,
   }
   constructor(props) {
     super(props);
@@ -67,8 +67,8 @@ class HomeScreen extends React.Component {
     }
   }
 
-  async loginWithFacebook() {
-
+  async loginWithFacebook(event) {
+    event.preventDefault();
 
     console.log('SHOW BUDGET');
     let AppID = '566023677470057';
@@ -83,6 +83,7 @@ class HomeScreen extends React.Component {
       console.log('it worked');
       firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
         console.log(error)
+
       })
     }
   }
@@ -95,6 +96,7 @@ class HomeScreen extends React.Component {
     {
 
       return (
+
         <ImageBackground style={styles.container} source={require('./images/background.png')}>
 
           <Form>
@@ -196,7 +198,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     paddingTop: 100
-  }
+  },
+
 })
 
 

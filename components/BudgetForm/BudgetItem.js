@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 
-const BudgetItem = () => {
+const BudgetItem = (props) => {
     return (
         <View>
-            <Text>Hello from BudgetForm</Text>
+            <Text>Hello from BudgetItem</Text>
         </View>
 
     )

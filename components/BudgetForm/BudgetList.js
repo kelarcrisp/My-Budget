@@ -1,18 +1,30 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View, FlatList, Button } from 'react-native';
 import BudgetItem from './BudgetItem';
 
-const BudgetList = () => {
+//puting expenses in as a param is just destructoring it from the props
+
+
+const BudgetList = ({ expenses }) => {
+
     return (
-        <View>
-            <BudgetItem />
-            <Text>Hello from BudgetForm</Text>
-        </View>
+        <FlatList data={expenses}
+            keyExtractor={(expense, index) => index.toString()}
+            renderItem={({ expense, index }) => {
+                return (
+                    <BudgetItem />
+                )
+            }}
+        >
+
+        </FlatList>
 
     )
 }
 
 const styles = StyleSheet.create({
+    text: {
 
+    }
 });
-export default BudgetList
+export default BudgetList;

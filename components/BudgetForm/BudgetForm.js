@@ -1,9 +1,12 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 
 const BudgetForm = () => {
     return (
-        <Text>Hello from BudgetForm</Text>
+        <View>
+            <Text>Hello from BudgetForm</Text>
+        </View>
+
     )
 }
 
