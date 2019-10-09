@@ -6,7 +6,7 @@ import BudgetForm from './BudgetForm';
 import BudgetItem from './BudgetItem';
 import BudgetList from './BudgetList';
 import uuid from 'uuid/v4'
-
+import Header from '../BudgetForm/../HomePage/Header';
 // to use uuid all you have to do is the following, import it and invoke it on the id: property
 const initialExpenses = [
     { id: uuid(), charge: 'rent', amount: 1600 },
@@ -14,7 +14,7 @@ const initialExpenses = [
     { id: uuid(), charge: 'credit card bill', amount: 1200 }
 
 ];
-console.log(initialExpenses);
+
 
 const BudgetHome = () => {
     const [expenses, setExpenses] = useState(initialExpenses);
@@ -22,14 +22,17 @@ const BudgetHome = () => {
     return (
 
         <View style={styles.container}>
-
-            <Text h2>Budget Calculator</Text>
-
-            <Text>Hello from BudgetHome</Text>
-            <BudgetList expenses={expenses} />
             <View>
+                <Header />
             </View>
-            <Text h3>Total Spending : {expenses.reduce((total, current) => {
+            <Text h2>Budget Calculator</Text>
+            <View>
+                <BudgetForm />
+            </View>
+            <View>
+                <BudgetList expenses={expenses} />
+            </View>
+            <Text h5>Total Spending : {expenses.reduce((total, current) => {
                 return total += current.amount
             }, 0)}</Text>
         </View>
@@ -39,7 +42,7 @@ const BudgetHome = () => {
 //the reduce function above always takes two params, the total and the current value or index youre on. 
 const styles = StyleSheet.create({
     container: {
-
+        paddingTop: 100
 
     },
     statusBar: {

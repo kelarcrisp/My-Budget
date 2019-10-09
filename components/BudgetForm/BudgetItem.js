@@ -1,10 +1,12 @@
 import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 
-const BudgetItem = (props) => {
+const BudgetItem = ({ expense }) => {
+
+
     return (
         <View>
-            <Text>Hello from BudgetItem</Text>
+            <Text>{expense.id}</Text>
         </View>
 
     )

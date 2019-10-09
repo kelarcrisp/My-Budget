@@ -7,9 +7,11 @@ import * as Facebook from 'expo-facebook'
 import background from './images/background.png';
 import LogoEmblem from './components/HomePage/LogoEmblem';
 import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 import BudgetHome from './components/BudgetForm/BudgetHome';
 
+import Profile from './BottomNavigator/Profile';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD3jADMJNmy1XfeSboA36tnbLdtYebjK-Y',
@@ -67,8 +69,8 @@ class HomeScreen extends React.Component {
     }
   }
 
-  async loginWithFacebook(event) {
-    event.preventDefault();
+  async loginWithFacebook() {
+
 
     console.log('SHOW BUDGET');
     let AppID = '566023677470057';
@@ -157,28 +159,33 @@ class HomeScreen extends React.Component {
   }
 }
 
+const switchNav = createBottomTabNavigator({
 
-class DetailsScreen extends React.Component {
-  render() {
-    return (
-      <View>
-        <Text>details screen</Text>
+  BudgetHome: {
+    screen: BudgetHome
 
-      </View>
-    )
-  }
-}
-const RootStack = createStackNavigator(
-  {
-    //import here any page you want to go to and add an onPress to go there!
-    Home: HomeScreen,
-    Details: DetailsScreen,
-    BudgetHome: BudgetHome
   },
-  { initialRouteName: 'Home' }
-)
+  Profile: {
+    screen: Profile
+  }
+}, {
+    initialRouteName: 'BudgetHome'
+  })
 
-const AppContainer = createAppContainer(RootStack)
+const SecondNavGroup = createSwitchNavigator({
+  Home: {
+    screen: HomeScreen
+  },
+  Feed: {
+    screen: switchNav
+  }
+})
+
+
+
+
+
+const AppContainer = createAppContainer(SecondNavGroup)
 
 export default class App extends React.Component {
   render() {
