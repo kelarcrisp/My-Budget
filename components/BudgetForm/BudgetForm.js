@@ -4,17 +4,30 @@ import { Button } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const BudgetForm = () => {
+
+    const [budget, setBudget] = useState(0);
+
+    handleBudget = () => {
+        setBudget({
+
+        })
+    }
+
     return (
         <View>
-            <Text>BudgetForm</Text>
+
+
         </View>
     )
 }
 
 
 const styles = StyleSheet.create({
-    buttonBudget: {
-
+    enterBudget: {
+        margin: 15,
+        height: 40,
+        borderColor: '#7a42f4',
+        borderWidth: 1
     }
 });
 export default BudgetForm

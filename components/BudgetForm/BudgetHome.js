@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 import { Text, Icon } from 'react-native-elements';
 import Alert from './Alert';
 import BudgetForm from './BudgetForm';
-import BudgetItem from './BudgetItem';
+
 import BudgetList from './BudgetList';
 import uuid from 'uuid/v4'
-import Header from '../BudgetForm/../HomePage/Header';
+
+
 // to use uuid all you have to do is the following, import it and invoke it on the id: property
 const initialExpenses = [
     { id: uuid(), charge: 'rent', amount: 1600 },
@@ -19,22 +20,25 @@ const initialExpenses = [
 const BudgetHome = () => {
     const [expenses, setExpenses] = useState(initialExpenses);
 
-    return (
 
-        <View style={styles.container}>
-            <View>
-                <Header />
-            </View>
+    return (
+        <View>
+            <SafeAreaView style={styles.container} >
+            </SafeAreaView >
             <Text h2>Budget Calculator</Text>
             <View>
                 <BudgetForm />
+                <Text>Your Monthly Budget is: {}</Text>
+                <Text h5>Total Spending : {expenses.reduce((total, current) => {
+                    return total += current.amount
+                }, 0)}</Text>
             </View>
             <View>
                 <BudgetList expenses={expenses} />
             </View>
-            <Text h5>Total Spending : {expenses.reduce((total, current) => {
-                return total += current.amount
-            }, 0)}</Text>
+
+
+
         </View>
 
     )
@@ -42,7 +46,8 @@ const BudgetHome = () => {
 //the reduce function above always takes two params, the total and the current value or index youre on. 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 100
+        backgroundColor: '#00C8FF',
+
 
     },
     statusBar: {

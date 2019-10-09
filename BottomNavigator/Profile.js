@@ -1,18 +1,26 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, TextInput } from 'react-native'
+
 const Profile = () => {
     return (
-        <View style={styles.container}>
-            <Text>Profilfdsfswfsfsfsdfsfsde</Text>
+        <View>
+            <SafeAreaView style={styles.container} >
+            </SafeAreaView >
+            <Text h2>Profile</Text>
+            <View>
+                <TextInput
+                    placeholder='enter your budget'
+
+                />
+            </View>
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 100,
-        justifyContent: 'center',
-        alignItems: 'center'
+        backgroundColor: '#00C8FF'
     }
 })
 export default Profile
