@@ -127,7 +127,7 @@ class HomeScreen extends React.Component {
             <Button style={{ marginTop: 10 }}
               full
               rounded
-              success
+              light
               onPress={() => { this.loginUser(this.state.email, this.state.password); this.props.navigation.navigate('BudgetHome') }}>
               <Text>Login</Text>
             </Button>
@@ -135,7 +135,7 @@ class HomeScreen extends React.Component {
             <Button style={{ marginTop: 10 }}
               full
               rounded
-              primary
+              light
               onPress={() => this.signUpUser(this.state.email
               )}>
               <Text>SignUp</Text>
@@ -144,7 +144,7 @@ class HomeScreen extends React.Component {
             <Button style={{ marginTop: 10 }}
               full
               rounded
-              primary
+              light
               onPress={() => { this.loginWithFacebook(this.state.password); this.props.navigation.navigate('BudgetHome') }}
             >
               <Text>Login with FaceBook</Text>
@@ -167,8 +167,9 @@ const switchNav = createBottomTabNavigator({
   },
   Profile: {
     screen: Profile
-  }
-}, {
+  },
+},
+  {
     initialRouteName: 'BudgetHome'
   })
 

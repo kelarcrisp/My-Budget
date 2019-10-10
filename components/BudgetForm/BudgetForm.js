@@ -7,27 +7,36 @@ const BudgetForm = () => {
 
     const [budget, setBudget] = useState(0);
 
-    handleBudget = () => {
-        setBudget({
-
-        })
-    }
+    const [item, setItem] = useState('');
+    const [cost, setCost] = useState('')
 
     return (
         <View>
+            <Text style={styles.add}>Add Item</Text>
+            <TextInput placeholder='Item charge' style={styles.form} onChangeText={value => setItem(value)} value={item} />
+            <Text style={styles.add}>Cost</Text>
+            <TextInput style={styles.form} placeholder='cost' onChangeText={value => setCost(value)} value={cost} />
+            <View>
 
-
+            </View>
         </View>
     )
 }
 
 
 const styles = StyleSheet.create({
-    enterBudget: {
-        margin: 15,
+
+    form: {
         height: 40,
-        borderColor: '#7a42f4',
+        margin: 20,
+        padding: 10,
+        borderColor: 'gray',
         borderWidth: 1
+    },
+    add: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#00C8FF'
     }
 });
 export default BudgetForm

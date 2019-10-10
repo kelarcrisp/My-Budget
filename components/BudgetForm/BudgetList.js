@@ -11,9 +11,12 @@ const BudgetList = ({ expenses }) => {
 
     return (
         <View>
+            <View style={styles.button}>
 
-            {expenses.length > 0 && (<Button type='clear' title='clear entire list'></Button>)}
+                <Button type='clear' title='Add item'></Button>
 
+                {expenses.length > 0 && (<Button type='clear' title='clear entire list'></Button>)}
+            </View>
             <FlatList data={expenses}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => {
@@ -21,6 +24,7 @@ const BudgetList = ({ expenses }) => {
                         <View>
                             <Text> item charge:{item.charge}</Text>
                             <Text> amount : ${item.amount}</Text>
+                            <Text>{"\n"}</Text>
                         </View>
                     )
                 }}
@@ -35,10 +39,9 @@ const BudgetList = ({ expenses }) => {
 
 const styles = StyleSheet.create({
     button: {
-        width: '90%',
-        height: 40,
-        padding: 10,
-        borderRadius: 8
+        justifyContent: 'center',
+        flexDirection: 'row'
+
     }
 });
 export default BudgetList;

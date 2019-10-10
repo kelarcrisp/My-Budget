@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, SafeAreaView } from 'react-native';
+import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Text, Icon } from 'react-native-elements';
 import Alert from './Alert';
 import BudgetForm from './BudgetForm';
@@ -27,15 +27,18 @@ const BudgetHome = () => {
             </SafeAreaView >
             <Text h2>Budget Calculator</Text>
             <View>
-                <BudgetForm />
+
                 <Text>Your Monthly Budget is: {}</Text>
-                <Text h5>Total Spending : {expenses.reduce((total, current) => {
+                <Text>savings left for the month: {}</Text>
+                <Text h5>Total Spending so far this month: {expenses.reduce((total, current) => {
                     return total += current.amount
                 }, 0)}</Text>
+                <BudgetForm />
+
             </View>
-            <View>
+            <ScrollView>
                 <BudgetList expenses={expenses} />
-            </View>
+            </ScrollView>
 
 
 
